@@ -1,0 +1,34 @@
+<?php
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\word_counter\WordCounter;
+
+/**
+ * Implements hook_TYPE_ENTITY_view().
+ */
+function word_counter_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode){
+  if ($entity->getType() !== 'article' || !\Drupal::getContainer()
+      ->get('config.factory')
+      ->get('word_counter.config')
+      ->get('enable')) {
+    return;
+  }
+
+  $text = $entity->get('body')->value;
+  $count = WordCounter::count($text);
+
+  $build['world_counter'] = [
+    '#markup' => \Drupal::translation()
+      ->formatPlural($count, '(1 word)', '(@count words)'),
+  ];
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function word_counter_uninstall($is_syncing){
+  \Drupal::service('config.factory')
+    ->getEditable('word_counter.config')
+    ->delete();
+}

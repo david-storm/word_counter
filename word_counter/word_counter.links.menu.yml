@@ -1,0 +1,11 @@
+world_counter.menu:
+  route_name: world_counter.menu
+  parent: system.admin_config
+  title: Counter
+  weight: -10
+world_counter.config:
+  route_name: word_counter.config
+  parent: world_counter.menu
+  description: 'Manage the "word counter".'
+  title: Word counter
+

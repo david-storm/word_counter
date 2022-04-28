@@ -1,0 +1,5 @@
+name: Word Counter
+description: This is module, which calculate words in article
+package: Custom
+type: module
+core_version_requirement: ^8 || ^9

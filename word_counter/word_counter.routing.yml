@@ -1,0 +1,14 @@
+world_counter.menu:
+  path: '/admin/config/word-counter'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Word Counter'
+  requirements:
+    _permission: 'administer word_counter'
+word_counter.config:
+  path: '/admin/config/word-counter/setting'
+  defaults:
+    _form:  '\Drupal\word_counter\Form\TurnCounter'
+    _title: 'Configuration word counter'
+  requirements:
+    _permission: 'administer word_counter'
