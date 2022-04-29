@@ -17,7 +17,7 @@ class WordCounter {
     }
 
     $textWithoutTags = strip_tags($text);
-    $res = preg_split('/\s/', $textWithoutTags, -1, PREG_SPLIT_NO_EMPTY);
+    $res = preg_split('/(&nbsp;|\W)/u', $textWithoutTags, -1, PREG_SPLIT_NO_EMPTY);
     return count($res);
   }
 
