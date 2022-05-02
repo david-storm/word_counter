@@ -13,8 +13,12 @@ class WordCounterTest extends UnitTestCase {
     $this->unit = new WordCounter();
   }
 
-  public function testCount(){
+  public function testCountFirst(){
     $this->assertEquals(5, $this->unit->count('one two three four five'));
+  }
+
+  public function testCountSecond(){
+    $this->assertEquals(5, $this->unit->count('<h1>one <span class="big box black">two</span> three four five</h1>'));
   }
 
 }
